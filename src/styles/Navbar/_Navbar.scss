@@ -1,0 +1,45 @@
+.header {
+  background-color: #8367c7;
+
+
+  .headerCont {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-block: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .headerLogo{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .headerImg {
+        width: 70px;
+       }
+       .headerTitulo{
+        color: #f0fff1;
+        font-size: 2rem;
+        font-family: 'Crimson Text', serif;;
+       }
+    }
+
+
+    .navbar {
+      display: flex;
+      gap: 20px;
+
+      .navLink {
+        color: #f0fff1;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.3rem;
+        font-family: 'Crimson Text', serif;
+      }
+
+      .carritoIcono{
+        width: 50px;
+      }
+    }
+  }
+}
