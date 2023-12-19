@@ -1,0 +1,23 @@
+.divBotones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+
+    .botonGeneral{
+        min-height: 50px;
+        border-radius: 8px;
+        padding: 10px 20px 10px 20px; 
+        border: none;
+        background-color: #b3e9c7;
+        font-family: 'Crimson Text', serif;
+        margin: 10px;
+        font-size: 1.4rem;
+    }
+    .botonGeneral:hover{
+        background-color: #8367c7;
+        color: #b3e9c7;
+    }
+
+}
+
