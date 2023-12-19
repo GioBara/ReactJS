@@ -40,9 +40,21 @@ const MOCK_DATA = [
         price: 600,
         img : "/imgs/logo.png",
         category : "Platos"
+    },
+    {   
+        id: 7,
+        name: "Tazon1",
+        price: 600,
+        img : "/imgs/logo.png",
+        category : "Tazones"
+    },
+    {   
+        id: 8,
+        name: "Tazon2",
+        price: 600,
+        img : "/imgs/logo.png",
+        category : "Tazones"
     }
-
-
 
 ]
 
