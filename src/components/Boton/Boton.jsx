@@ -1,8 +1,8 @@
 
-const BotonGeneral = ( { text } ) =>{
+const BotonGeneral = ( { text, onClick } ) =>{
     
     return(
-        <button className="botonGeneral">{text}</button>
+        <button className="botonGeneral" onClick={onClick} >{text}</button>
     )
 }
 

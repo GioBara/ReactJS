@@ -5,10 +5,19 @@ import Navbar from './components/Navbar/Navbar'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
+import { CartContext } from './context/CartContext'
 
 function App() {
+  const [cart, setCart] = useState([]);
+  console.log(cart)
+
+  const addToCart = (item) => {
+    setCart([...cart, item])
+  }
+
   return (
-    <BrowserRouter>
+    <CartContext.Provider value={{addToCart, cart}}> 
+      <BrowserRouter>
 
       <Navbar />
 
@@ -25,7 +34,9 @@ function App() {
       </Routes>
 
 
-    </BrowserRouter>
+  </BrowserRouter>
+  </CartContext.Provider>
+   
   )
 }
 
