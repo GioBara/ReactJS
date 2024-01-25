@@ -1,10 +1,16 @@
-import { BsBasket2 } from "react-icons/bs";
+import { Link } from "react-router-dom"
+import cartIcon from "../../assets/cart.svg"
+import { useContext } from "react"
+import { CartContext } from "../../context/CartContext"
 
 const CartWidget = () => {
+    const { itemsInCart } = useContext(CartContext)
+
     return(
-        <div>
-            <a href="#" className="carritoIcono"><BsBasket2 /></a>
-        </div>
+        <Link to="/Cart" className="flex item-center gap-1">
+            <img src={cartIcon} alt="icono de carrito" className="w-8"/>
+            <span className="text-white text-xl">{ itemsInCart() }</span>   
+        </Link>
     )
 }
 

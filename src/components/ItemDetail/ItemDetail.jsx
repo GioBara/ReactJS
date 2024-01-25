@@ -9,7 +9,7 @@ import { CartContext } from "../../context/CartContext";
 const ItemDetail = ({item})=>{
     const [ cantidad, setCantidad ] = useState(1);
     const [ color, setColor ] = useState("");
-    const { addToCart } = useContext(CartContext);
+    const { addToCart, isInCart } = useContext(CartContext);
 
     const handleAgregar = () =>{
         const itemToCart ={
@@ -30,19 +30,23 @@ const ItemDetail = ({item})=>{
             <p className="priceDetail">Categoria: {item.category}</p>
            
             <div className="divBotones">
-                <>
-                    <SelectorDeCantidad
-                        cantidad = {cantidad}
-                        stock = {item.stock}
-                        setCantidad={setCantidad}
-                    />
-                    <SelectorDeColor setColor={setColor}/>    
-                    <BotonGeneral text="Agregar al Carrito" onClick={handleAgregar}/>
-                </>
-                <>
-                <Link to="/cart"><BotonGeneral text="Terminar Compra"></BotonGeneral></Link>
-                </>
-                
+                {
+                    isInCart(item.id) 
+                    ? 
+                        <>
+                            <Link to="/cart"><BotonGeneral text="Terminar Compra"></BotonGeneral></Link>
+                        </>
+                    :
+                        <>
+                            <SelectorDeCantidad
+                                cantidad = {cantidad}
+                                stock = {item.stock}
+                                setCantidad={setCantidad}
+                            />
+                            <SelectorDeColor setColor={setColor}/>    
+                            <BotonGeneral text="Agregar al Carrito" onClick={handleAgregar}/>
+                    </>
+                }
             </div>
         </div>
     )
