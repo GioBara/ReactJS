@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import pedirDatos from "../utils/utils"
 import { useParams } from "react-router-dom"
+import { collection, getDocs, query, where } from "firebase/firestore"
+import { db } from "../firebase/config"
 
 const useProductos = ()=>{
     const [productos, setProductos] = useState([])
@@ -12,16 +13,21 @@ const useProductos = ()=>{
     useEffect(()=>{
         setLoading(true)
 
-        pedirDatos()
-            .then((data)=>{
-                const items = categoryId 
-                                ? data.filter(prod => prod.category === categoryId)
-                                : data
+        const productosRef = collection(db, "productos");
+        const docRef = categoryId 
+                        ? query (productosRef, where("category", "==", categoryId) )
+                        : productosRef
 
-                setProductos(items)
-                setLoading(false)
+        getDocs( docRef )
+            .then((querySnapshot)=>{
+                const docs = querySnapshot.docs.map(doc => ({...doc.data(), id: doc.id}))
+                console.log(docs);
+
+                setProductos(docs);
             })
-    },[categoryId])
+            .finally(() => setLoading(false));
+
+    }, [categoryId])
 
     return {
         productos,
