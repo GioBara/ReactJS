@@ -21,8 +21,6 @@ const useProductos = ()=>{
         getDocs( docRef )
             .then((querySnapshot)=>{
                 const docs = querySnapshot.docs.map(doc => ({...doc.data(), id: doc.id}))
-                console.log(docs);
-
                 setProductos(docs);
             })
             .finally(() => setLoading(false));
